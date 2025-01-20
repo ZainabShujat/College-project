@@ -1,1 +1,1 @@
-# College-project
+# College-mini-project
