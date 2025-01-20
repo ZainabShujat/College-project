@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmation - Medicine Testing Website</title>
+    <link rel="stylesheet" href="styles.css"> <!-- link to external stylesheet -->
+  <style>
+        *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+       }
+      
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+      
+      a {
+        text-decoration: none;
+        color: #337ab7;
+      }
+      
+      a:hover {
+        color: #23527c;
+      }
+      
+      /* Header Styles */
+      
+      header {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+      }
+      
+      header nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      header nav ul li {
+        margin-right: 20px;
+      }
+      
+      header nav a {
+        color: #fff;
+      }
+      
+      header nav a:hover {
+        color: #ccc;
+      }
+      
+      /* Main Styles */
+      
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2em;
+      }
+      
+      .registration-confirmation-container {
+        background-color: #fff;
+        padding: 2em;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 500px;
+      }
+      
+      .registration-confirmation-header {
+        text-align: center;
+        margin-bottom: 1em;
+      }
+      
+      .registration-confirmation-header h1 {
+        font-size: 24px;
+        margin-bottom: 0.5em;
+      }
+      
+      .registration-confirmation-header p {
+        font-size: 18px;
+        color: #666;
+      }
+      
+      .registration-confirmation-options {
+        text-align: center;
+        margin-top: 2em;
+      }
+      
+      .registration-confirmation-options p {
+        font-size: 18px;
+        margin-bottom: 1em;
+      }
+      
+      .btn {
+        padding: 1em 2em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .btn-primary {
+        background-color: #337ab7;
+        color: #fff;
+      }
+      
+      .btn-primary:hover {
+        background-color: #23527c;
+      }
+      
+      .btn-secondary {
+        background-color: #ccc;
+        color: #333;
+      }
+      
+      .btn-secondary:hover {
+        background-color: #13b518;
+      }
+      
+      /* Footer Styles */
+      
+  </style>
+
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="registration-confirmation-container">
+            <div class="registration-confirmation-header">
+                <h1>Registration Confirmation</h1>
+                <p>Congratulations! You have successfully registered.</p>
+            </div>
+            <div class="registration-confirmation-options">
+                <p>Redierct to login page</p>
+                <button class="btn btn-secondary" onclick="window.location.href='loginpage.html'">Go Back to Login</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p align = "center">&copy; 2023 "NAME OF WEBSITE". All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>

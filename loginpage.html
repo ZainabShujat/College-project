@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page with Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .header nav li {
+            margin-right: 10px;
+        }
+        
+        .header nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .dashboard {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .login-container {
+            width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #00000098;
+        }
+
+        .login-form {
+            margin-top: 20px;
+        }
+        
+        .login-form input {
+            width: 90%;
+            height: 30px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #6e6e6e;
+        }
+
+        .login-form input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            color: #ccc;
+        }
+        
+        .login-form button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #89898944;
+            color: #000000;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button[type="submit"]:hover {
+            background-color: #13b518;
+            color: #000000;
+        }
+
+        .button {
+            display: inline-block;
+            width: 97.45%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            background-color: #89898944;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #13b518;
+        }
+    </style>
+</head>
+<body>
+    <div class="header nav ul">
+        <h1>LOGIN FORM</h1>
+        <a href="landingpage.html">Home</a> | <a href="about.html">About</a> | <a href="contact.html">Contact</a>
+    </div>
+    <div class="dashboard">
+        <h1 align="center">Testing The Quality Of Medicine</h1>
+    </div>
+    <div class="login-container">
+        <h2 align="center">ENTER YOUR DETAILS</h2>
+        <form class="login-form" onsubmit="return handleLogin(event)">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="checkbox" id="rememberMe"> Remember me
+            <button class="button" type="submit">Login</button>
+        </form>
+        <p align="center"> OR </p>
+        <a href="register.html" class="button" align="center">CREATE AN ACCOUNT</a>
+    </div>
+    <div class="footer">
+        <p align="center">2025 "Quality of Medicine. All rights reserved."</p>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get username and password from input fields
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Store username and password in localStorage if "Remember me" is checked
+            if (rememberMe) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+            } else {
+                localStorage.removeItem('username');
+                localStorage.removeItem('password');
+            }
+
+            // Redirect to landing page after login
+            window.location.href = 'landingpage.html';
+        }
+
+        // Check if username is stored in localStorage and populate the input field
+        window.onload = function() {
+            const storedUsername = localStorage.getItem('username');
+            if (storedUsername) {
+                document.getElementById('username').value = storedUsername;
+            }
+        };
+    </script>
+</body>
+</html>
