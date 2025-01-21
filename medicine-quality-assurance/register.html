@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external stylesheet -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Align all text to the center */
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 1em;
+            text-align: center; /* Center text in the header */
+        }
+
+        .header nav ul {
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center navigation items */
+        }
+
+        .header nav li {
+            margin: 0 10px;
+        }
+
+        .header nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .dashboard {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center; /* Center text in the dashboard */
+        }
+
+        .login-container {
+            width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #00000098;
+            text-align: center; /* Center text in the login container */
+        }
+
+        .login-form {
+            margin-top: 20px;
+        }
+
+        .login-form input {
+            width: 90%;
+            height: 30px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #6e6e6e;
+            text-align: center; /* Align input text to center */
+        }
+
+        .login-form input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        .login-form button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #89898944;
+            color: #000000;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button[type="submit"]:hover {
+            background-color: #13b518;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="#">About</a></li> |
+                <li><a href="loginpage.html">Login</a></li> |
+                <li><a href="landingpagebeforelogin.html">Back to home page</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="dashboard">
+            <h1>REGISTER FOR OUR PLATFORM</h1>
+        </section>
+        <section class="login-container">
+            <form id="register-form" class="login-form" action="javascript:void(0);">
+                <div class="form-group">
+                    <label for="role">Register as</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select role</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Create Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div>
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                
+                <button type="submit" id="register-btn" class="btn btn-primary">REGISTER</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 "Test The Quality Of Medicine". All rights reserved.</p>
+    </footer>
+    <script>
+        console.log('JavaScript code is running');
+
+document.getElementById('register-btn').addEventListener('click', (e) => {
+    console.log('Register button clicked');
+    e.preventDefault(); // Prevent form submission
+
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const role = document.getElementById('role').value;
+
+    // Check if all fields are filled
+    if (!username || !email || !password || !confirmPassword || !role) {
+        alert('Please fill in all fields, including selecting a role!');
+        return;
+    }
+
+    // Check if password and confirm password match
+    if (password !== confirmPassword) {
+        alert('Password and confirm password do not match!');
+        return;
+    }
+
+    // Check if password meets the security requirements
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+        alert('Password must be at least 8 characters long, contain at least one number, one uppercase letter, one lowercase letter, and one special character!');
+        return;
+    }
+
+    // Check if email is valid
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert('Invalid email address!');
+        return;
+    }
+
+    // Send registration data to the server
+    const endpoint = role === 'admin' ? '/admin/register' : '/register';
+
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.message === 'Admin registered successfully' || data.message === 'User registered successfully') {
+                alert(data.message);
+                // Redirect to login page or landing page
+                window.location.href = 'loginpage.html';
+            } else {
+                alert(data.message || 'Registration failed');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+});
+
+    </script>
+</body>
+</html>
