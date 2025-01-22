@@ -1,4 +1,4 @@
-# Project Name
+# Testing the quality of medicines and consumables 
 
 A detailed web-based application that educates users about the process of medicine testing, its importance, and provides an analysis of 20 tested medicines. The platform highlights how the quality of medicines varies by brand, helping users make informed decisions.
 
