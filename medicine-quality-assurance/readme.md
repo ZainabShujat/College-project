@@ -95,7 +95,7 @@ project-root/
 |-- .gitignore         # Git ignore rules
 |-- about.html         # About page
 |-- contact.html       # Contact page
-|-- homepage.html      # Main homepage
+|-- index.html      # Main homepage
 |-- landingpagebeforelogin.html  # Landing page for unauthenticated users
 |-- loginpage.html     # Login page
 |-- register.html      # Registration page
