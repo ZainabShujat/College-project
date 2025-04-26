@@ -1,4 +1,4 @@
-# College-mini-project
+# College-mini-project- url to visit : https://zainabshujat.github.io/College-project/
 # TEsting the quality of medicines 
 
 A detailed web-based application that educates users about the process of medicine testing, its importance, and provides an analysis of 20 tested medicines. The platform highlights how the quality of medicines varies by brand, helping users make informed decisions.
